@@ -38,3 +38,33 @@ export class NavPageStyle {
    */
   static readonly POSITION_INITIAL: number = 0;
 };
+
+/**
+ * The style of ToolBarComponent.
+ */
+export class ToolBarStyle {
+  /**
+   * The bottom margin.
+   */
+  static readonly MARGIN_BOTTOM: number = 10;
+
+  /**
+   * The size of image.
+   */
+  static readonly IMAGE_SIZE: number = 24;
+
+  /**
+   * The weight of layout.
+   */
+  static readonly LAYOUT_WEIGHT: string = '25%';
+
+  /**
+   * The height of divider.
+   */
+  static readonly DIVIDER_HEIGHT: number = 0.5;
+
+  /**
+   * The opacity of divider.
+   */
+  static readonly DIVIDER_OPACITY: number = 0.05;
+};
