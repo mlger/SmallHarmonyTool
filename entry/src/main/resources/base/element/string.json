@@ -15,6 +15,11 @@
     {
       "name": "nav_class_schedule",
       "value": "课表"
+    },
+    {
+      "name": "class_schedule_title",
+      "value": "南哪课表"
     }
+
   ]
 }

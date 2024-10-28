@@ -1,3 +1,4 @@
+import ClassSchedule from '../view/ClassSchedule/ClassSchedule'
 import NavViewModel from '../viewmodel/NavViewModel';
 import ToolBarData from '../viewmodel/ToolBarData';
 import ToolBarComponent from '../view/ToolBarComponent';
@@ -36,7 +37,7 @@ struct NavPage {
         ForEach(this.toolBarConfigs, (item: ToolBarData, index?: number) => {
           TabContent() {
             if (index === CLASS_SCHEDULE) {
-              // HomePage()
+              ClassSchedule();
             } else {
               // this.HolderPage(item?.text)
             }
