@@ -1,44 +1,31 @@
+import { CLASS_HEIGHT, CLASS_SUM_WIDTH, TIME_WIDTH } from "../../common/constants/ClassScheduleConstants"
+import { PERCENTAGE_100 } from "../../common/constants/Constants"
+
 @Component
 export default struct ScheduleBody {
   build() {
     Row() {
+      // TIME
       Column() {
-        Row() {
-        }.width('100%').height(30).backgroundColor(Color.Red)
-
-        Row() {
-        }.width('100%').height(30).backgroundColor(Color.Blue)
-
-        Row() {
-        }.width('100%').height(30).backgroundColor(Color.Yellow)
-      }.width('30%').height(30).backgroundColor('rgb(242,242,242)')
-
-      Grid() {
-        GridItem() {
-          Row() {
-          }.width('100%').height(30).backgroundColor(Color.Orange)
-        }
-        GridItem() {
-          Row() {
-          }.width('100%').height(30).backgroundColor(Color.Red)
-        }
-        GridItem() {
-          Row() {
-          }.width('100%').height(30).backgroundColor(Color.Green)
-        }
-        GridItem() {
-          Row() {
-          }.width('100%').height(30).backgroundColor(Color.Blue)
-        }
-        GridItem() {
-          Row() {
-          }.width('100%').height(30).backgroundColor(Color.Orange)
-        }
+        Row().width(PERCENTAGE_100).height(CLASS_HEIGHT).backgroundColor(Color.Red)
+        Row().width(PERCENTAGE_100).height(CLASS_HEIGHT).backgroundColor(Color.Blue)
       }
-      .width('30%')
-      .columnsTemplate('1fr 2fr 1fr')
-      .rowsTemplate('30px 30px 30px')
-    }.width('100%') // 确保Row占满页面宽度
-    .alignItems(VerticalAlign.Top) // 设置子元素左对齐
+      .width(TIME_WIDTH)
+      .height(PERCENTAGE_100)
+
+      // Column()
+      //   .width('100%')
+      //   .height(PERCENTAGE_100)
+      //   .backgroundColor(0xF5DEB3)
+      //
+      Grid() {
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+      .width(CLASS_SUM_WIDTH)
+      .height('100%')
+    }
+    .width(PERCENTAGE_100)
+
   }
 }

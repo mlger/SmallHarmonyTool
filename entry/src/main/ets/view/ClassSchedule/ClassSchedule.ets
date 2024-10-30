@@ -1,6 +1,7 @@
 import ScheduleHeader from './ScheduleHeader'
 import ScheduleDate from  './ScheduleDate'
 import ScheduleBody from './ScheduleBody'
+import { PERCENTAGE_100 } from '../../common/constants/Constants'
 
 @Component
 export default struct ClassSchedule {
@@ -10,9 +11,10 @@ export default struct ClassSchedule {
   build() {
     Column() {
       ScheduleHeader()
-        .align(Alignment.Start)
-      // ScheduleDate()
-      // ScheduleBody()
+      ScheduleDate()
+      ScheduleBody()
     }
+    .width(PERCENTAGE_100)
+    .height(PERCENTAGE_100)
   }
 }

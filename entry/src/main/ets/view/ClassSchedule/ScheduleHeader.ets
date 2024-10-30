@@ -4,14 +4,25 @@ import { ClassScheduleStyle, PERCENTAGE_100 } from "../../common/constants/Const
 export default struct ScheduleHeader {
   build() {
     Row() {
+      Blank()
+        .width('10%')
+
       Column() {
         Text("南哪课表")
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
         Text("第1周")
           .fontSize(18)
-      }.alignItems(HorizontalAlign.Center)
+      }
+      .alignItems(HorizontalAlign.Center)
+      .width('80%')
+
+      Button() {
+
+      }
+
     }
+    .width(PERCENTAGE_100)
 
   }
 }

@@ -17,6 +17,10 @@
       "value": "课表"
     },
     {
+      "name": "nav_todo_list",
+      "value": "待办"
+    },
+    {
       "name": "class_schedule_title",
       "value": "南哪课表"
     }

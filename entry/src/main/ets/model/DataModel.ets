@@ -1,4 +1,5 @@
 import ToolBarData from '../viewmodel/ToolBarData';
+import ClassTime from '../viewmodel/ClassScheduleData'
 
 export default class DataModel {
   public static readonly TOOL_BAR: ToolBarData[] = [
@@ -7,6 +8,69 @@ export default class DataModel {
       text: $r('app.string.nav_class_schedule'),
       icon: $rawfile('index/class_schedule.png'),
       icon_after: $rawfile('index/class_schedule.png'),
+    },
+    {
+      num: 1,
+      text: $r('app.string.nav_todo_list'),
+      icon: $rawfile('index/class_schedule.png'),
+      icon_after: $rawfile('index/class_schedule.png'),
     }
   ];
+  public static readonly CLASS_TIME: ClassTime[] = [
+    {
+      id: 1,
+      begin_time: '08:00',
+      end_time: '08:50',
+    },
+    {
+      id: 2,
+      begin_time: '09:00',
+      end_time: '09:50',
+    },
+    {
+      id: 3,
+      begin_time: '10:10',
+      end_time: '11:00',
+    },
+    {
+      id: 4,
+      begin_time: '11:10',
+      end_time: '12:00',
+    },
+    {
+      id: 5,
+      begin_time: '14:00',
+      end_time: '14:50',
+    },
+    {
+      id: 6,
+      begin_time: '15:00',
+      end_time: '15:50',
+    },
+    {
+      id: 7,
+      begin_time: '16:10',
+      end_time: '17:00',
+    },
+    {
+      id: 8,
+      begin_time: '17:10',
+      end_time: '18:00',
+    },
+    {
+      id: 9,
+      begin_time: '18:30',
+      end_time: '19:20',
+    },
+    {
+      id: 10,
+      begin_time: '19:30',
+      end_time: '20:20',
+    },
+    {
+      id: 11,
+      begin_time: '20:30',
+      end_time: '21:20',
+    }
+  ]
 }

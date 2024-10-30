@@ -1,19 +1,28 @@
+import { CLASS_WIDTH, DATE_HEIGHT, TIME_WIDTH } from "../../common/constants/ClassScheduleConstants"
 
 @Component
 export default struct ScheduleDate {
-  @State services: Array<string> = ['直播', '进口']
+  colors: Array<Color> = [Color.Red, Color.Yellow, Color.Green, Color.Blue, Color.Pink, Color.Gray, Color.Orange]
 
   build() {
     Row() {
       Column() {
-      }.width('20%').height(30).backgroundColor(0xF5DEB3)
+      }.width(TIME_WIDTH).height(DATE_HEIGHT).backgroundColor(0xF5DEB3)
 
-      Column() {
-      }.width('20%').height(30).backgroundColor(0xD2B48C)
+      // 使用ForEach循环遍历颜色数组
+      ForEach(this.colors, (color: Color, index: number) => {
+        Column() {
+        }
+        .width(CLASS_WIDTH)
+        .height(DATE_HEIGHT)
+        .backgroundColor(color)
+      })
 
-      Column() {
-      }.width('20%').height(30).backgroundColor(0xF5DEB3)
-    }.width('100%').height(30).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
+    }
+    .width('100%')
+    .height(30)
+    .alignItems(VerticalAlign.Bottom)
+    .backgroundColor('rgb(242,242,242)')
 
   }
 }
