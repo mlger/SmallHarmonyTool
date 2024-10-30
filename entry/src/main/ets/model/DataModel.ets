@@ -6,14 +6,14 @@ export default class DataModel {
     {
       num: 0,
       text: $r('app.string.nav_class_schedule'),
-      icon: $rawfile('index/class_schedule.png'),
-      icon_after: $rawfile('index/class_schedule.png'),
+      icon: $rawfile('index/class_schedule.svg'),
+      icon_after: $rawfile('index/class_schedule_selected.svg'),
     },
     {
       num: 1,
-      text: $r('app.string.nav_todo_list'),
-      icon: $rawfile('index/class_schedule.png'),
-      icon_after: $rawfile('index/class_schedule.png'),
+      text: $r('app.string.nav_todolist'),
+      icon: $rawfile('index/todolist.svg'),
+      icon_after: $rawfile('index/todolist_selected.svg'),
     }
   ];
   public static readonly CLASS_TIME: ClassTime[] = [
