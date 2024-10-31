@@ -21,7 +21,7 @@ export default struct ScheduleHeader {
 
       Button("导入课表")
         .onClick(() => {
-          router.pushUrl({ url: 'pages/LoadSchedule' })
+          router.pushUrl({ url: 'pages/LoadSchedulePage' })
         })
         .width(ICON_WIDTH)
     }

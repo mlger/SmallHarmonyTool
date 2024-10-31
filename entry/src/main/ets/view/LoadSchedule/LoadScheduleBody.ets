@@ -14,12 +14,38 @@ export default struct LoadScheduleBody {
 
   build() {
     Column() {
-      Row() {
+      Stack() {
+        // Web 组件，占据整个屏幕
         Web({ src: this.webSrc, controller: this.controller })
           .zoomAccess(true)
           .height(PERCENTAGE_100)
           .width(PERCENTAGE_100)
+          .onPageEnd((event) => {
+            console.info('Page finished loading: ' + event.url);
+          })
+
+        Column() {
+
+          // 刷新按钮，右上角
+          Button('刷新')
+            .onClick(() => {
+              console.info('Refresh button clicked');
+              this.controller.refresh(); // 刷新 Web 页面
+            })
+            .width(50)// 按钮宽度
+            .height(25)// 按钮高度
+            .backgroundColor(Color.Blue)
+            .fontColor(Color.White)
+
+        }
+        .width(60)
+        .height(30)
+        // .backgroundColor(Color.Blue)
+        .alignItems(HorizontalAlign.End)
+        .alignSelf(ItemAlign.End)
+
       }
+      .alignContent(Alignment.TopEnd)
     }
   }
 
