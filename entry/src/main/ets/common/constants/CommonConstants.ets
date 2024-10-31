@@ -2,9 +2,8 @@ export default class CommonConstant{
   /**
    * The host address of the server.
    */
-  static readonly SERVE: string = 'https://authserver.nju.edu.cn/';
-  static readonly SERVER: string = 'https://ehallapp.nju.edu.cn/jwapp/sys/wdkb/*default/index.do#/xskcb'
-  static readonly SCHEDULE_URL: string = 'https://ehallapp.nju.edu.cn/jwapp/sys/wdkb/modules/xskcb/cxxskclb.do?XNXQDM=2024-2025-1';
+  static readonly SERVER: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/*default/index.do#/'
+  static readonly SCHEDULE_URL: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/wdkb/getWeekCourseList.do'
 
   /**
    * The request success code.

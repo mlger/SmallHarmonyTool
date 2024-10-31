@@ -9,6 +9,7 @@ import CommonConstant from "../../common/constants/CommonConstants";
 export default struct LoadScheduleHeader {
   @State showPrompt: boolean = false;
   @State cookie: string = "";
+  week_now: number = 8;
 
   build() {
     Row() {
@@ -51,12 +52,29 @@ export default struct LoadScheduleHeader {
       console.info("lggcookie: " + this.cookie)
 
       const data = await httpRequest.request(
-        CommonConstant.SCHEDULE_URL,
+        CommonConstant.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + this.week_now,
         {
           method: http.RequestMethod.POST,
+          header: {
+            'Cookie': this.cookie,
+          },
+          // extraData: {
+          //   xssf: 'bks',
+          //   xnxqdm: '2024-2025-1',
+          //   zc: 8,
+          // }
+
         }
+
       )
       console.info("lgg: " + data.result)
+      /*
+       after successfully get res:
+       1. clear the database
+       2. store res in the database
+       3. clear the cookie
+       4. return to the main page
+      */
     } catch (error) {
     }
   }

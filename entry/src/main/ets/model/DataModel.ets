@@ -1,5 +1,5 @@
 import ToolBarData from '../viewmodel/ToolBarData';
-import ClassTime from '../viewmodel/ClassScheduleData'
+import {ClassTime} from '../viewmodel/ClassScheduleDataModel'
 
 export default class DataModel {
   public static readonly TOOL_BAR: ToolBarData[] = [
