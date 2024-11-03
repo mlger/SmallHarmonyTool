@@ -14,7 +14,7 @@
  */
 
 import { http } from '@kit.NetworkKit';
-import CommonConstant from '../constants/CommonConstants';
+import CommonConstants from '../constants/CommonConstants';
 
 /**
  * Initiates an HTTP request to a given URL.
@@ -31,8 +31,8 @@ export default async function httpGet(url: string) {
   let result = await request.request(url, {
     method: http.RequestMethod.GET,
     header: { 'Content-Type': 'application/json' },
-    readTimeout: CommonConstant.READ_TIMEOUT,
-    connectTimeout: CommonConstant.CONNECT_TIMEOUT
+    readTimeout: CommonConstants.READ_TIMEOUT,
+    connectTimeout: CommonConstants.CONNECT_TIMEOUT
   });
   return result;
 }

@@ -1,9 +1,13 @@
-import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
-import { HEADER_HEIGHT, PERCENTAGE_100 } from "../../common/constants/Constants";
 import router from '@ohos.router';
 import http from '@ohos.net.http';
 import { webview } from "@kit.ArkWeb";
-import CommonConstant from "../../common/constants/CommonConstants";
+import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
+import { HEADER_HEIGHT, PERCENTAGE_100 } from "../../common/constants/Constants";
+import CommonConstants from "../../common/constants/CommonConstants";
+import ClassScheduleTable from '../../common/database/tables/ClassScheduleTable'
+import { JSON } from '@kit.ArkTS';
+import { plainToClass } from 'class-transformer';
+import { http_schedule_data } from '../../viewmodel/httpGetClassScheduleData'
 
 @Component
 export default struct LoadScheduleHeader {
@@ -33,10 +37,6 @@ export default struct LoadScheduleHeader {
         .onClick(() => {
           console.info('Import button clicked');
           this.getScheduleData();
-          this.showPrompt = true;
-          setTimeout(() => {
-            this.showPrompt = false;
-          }, 3000)
         })
         .width(ClassScheduleConstants.ICON_WIDTH)
     }
@@ -48,26 +48,31 @@ export default struct LoadScheduleHeader {
   async getScheduleData() {
     try {
       const httpRequest = http.createHttp();
-      this.cookie = webview.WebCookieManager.fetchCookieSync(CommonConstant.SERVER)
+      this.cookie = webview.WebCookieManager.fetchCookieSync(CommonConstants.SERVER)
       console.info("lggcookie: " + this.cookie)
 
-      const data = await httpRequest.request(
-        CommonConstant.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + this.week_now,
-        {
-          method: http.RequestMethod.POST,
-          header: {
-            'Cookie': this.cookie,
-          },
-          // extraData: {
-          //   xssf: 'bks',
-          //   xnxqdm: '2024-2025-1',
-          //   zc: 8,
-          // }
-
+      const dataArray: http_schedule_data[] = [];
+      for (let i = 1; i <= 1; i++) {
+        const data = await httpRequest.request(
+          CommonConstants.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + i,
+          {
+            method: http.RequestMethod.POST,
+            header: {
+              'Cookie': this.cookie,
+            },
+          }
+        )
+        console.info("lgggg: ", data.result);
+        const ParseData = JSON.parse(data.result.toString()) as http_schedule_data;
+        if (!ParseData.success) {
+          throw new Error("Failed to get schedule data");
         }
+        dataArray.push(ParseData)
 
-      )
-      console.info("lgg: " + data.result)
+
+      }
+
+
       /*
        after successfully get res:
        1. clear the database

@@ -1,22 +1,29 @@
-export default class CommonConstant{
+import relationalStore from '@ohos.data.relationalStore';
+
+export default class CommonConstants {
   /**
    * The host address of the server.
    */
   static readonly SERVER: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/*default/index.do#/'
   static readonly SCHEDULE_URL: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/wdkb/getWeekCourseList.do'
-
-  /**
-   * The request success code.
-   */
   static readonly SUCCESS_CODE: number = 200;
-
-  /**
-   * Read timeout.
-   */
   static readonly READ_TIMEOUT: number = 50000;
+  static readonly CONNECT_TIMEOUT: number = 50000;
 
   /**
-   * Connect timeout.
+   * Log tag.
    */
-  static readonly CONNECT_TIMEOUT: number = 50000;
+  static readonly RDB_DOMAIN = 0x01;
+  static readonly RDB_TAG = '[Debug.Rdb]';
+
+
+
+
+  /**
+   * Rdb database config.
+   */
+  static readonly STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'database.db',
+    securityLevel: relationalStore.SecurityLevel.S1
+  };
 }

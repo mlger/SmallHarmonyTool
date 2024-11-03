@@ -3,12 +3,12 @@ import { PERCENTAGE_100 } from '../../common/constants/Constants';
 import promptAction from '@ohos.promptAction';
 import httpGet from '../../common/utils/HttpUtil';
 import http from '@ohos.net.http';
-import CommonConstant from '../../common/constants/CommonConstants';
+import CommonConstants from '../../common/constants/CommonConstants';
 
 @Component
 export default struct LoadScheduleBody {
   controller: webview.WebviewController = new webview.WebviewController();
-  @State webSrc: string = CommonConstant.SERVER; // 目标登录页面
+  @State webSrc: string = CommonConstants.SERVER; // 目标登录页面
 
   build() {
     Column() {
