@@ -3,7 +3,3 @@ export class ClassTime {
   begin_time: string = '00:00';
   end_time: string = '00:00';
 }
-
-export class ClassScheduleData {
-
-}

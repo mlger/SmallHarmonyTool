@@ -1,11 +1,9 @@
 import { webview } from '@kit.ArkWeb';
-import { HEADER_HEIGHT, PERCENTAGE_100 } from '../../common/constants/Constants';
+import { PERCENTAGE_100 } from '../../common/constants/Constants';
 import promptAction from '@ohos.promptAction';
 import httpGet from '../../common/utils/HttpUtil';
 import http from '@ohos.net.http';
 import CommonConstant from '../../common/constants/CommonConstants';
-import { App, router } from '@kit.ArkUI';
-import { ICON_WIDTH, TITLE_FONT_SIZE, TITLE_WIDTH } from '../../common/constants/ClassScheduleConstants';
 
 @Component
 export default struct LoadScheduleBody {

@@ -1,4 +1,4 @@
-import { CLASS_WIDTH, DATE_HEIGHT, TIME_WIDTH } from "../../common/constants/ClassScheduleConstants"
+import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 
 @Component
 export default struct ScheduleDate {
@@ -7,14 +7,14 @@ export default struct ScheduleDate {
   build() {
     Row() {
       Column() {
-      }.width(TIME_WIDTH).height(DATE_HEIGHT).backgroundColor(0xF5DEB3)
+      }.width(ClassScheduleConstants.TIME_WIDTH).height(ClassScheduleConstants.DATE_HEIGHT).backgroundColor(0xF5DEB3)
 
       // 使用ForEach循环遍历颜色数组
       ForEach(this.colors, (color: Color, index: number) => {
         Column() {
         }
-        .width(CLASS_WIDTH)
-        .height(DATE_HEIGHT)
+        .width(ClassScheduleConstants.CLASS_WIDTH)
+        .height(ClassScheduleConstants.DATE_HEIGHT)
         .backgroundColor(color)
       })
 

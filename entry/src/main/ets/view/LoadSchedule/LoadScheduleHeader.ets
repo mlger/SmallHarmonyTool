@@ -1,4 +1,4 @@
-import { ICON_WIDTH, TITLE_FONT_SIZE, TITLE_WIDTH } from "../../common/constants/ClassScheduleConstants";
+import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 import { HEADER_HEIGHT, PERCENTAGE_100 } from "../../common/constants/Constants";
 import router from '@ohos.router';
 import http from '@ohos.net.http';
@@ -17,13 +17,13 @@ export default struct LoadScheduleHeader {
         .onClick(() => {
           router.back()
         })
-        .width(ICON_WIDTH)
+        .width(ClassScheduleConstants.ICON_WIDTH)
 
       Column() {
         Text($r('app.string.load_schedule_title'))
-          .fontSize(TITLE_FONT_SIZE)
+          .fontSize(ClassScheduleConstants.TITLE_FONT_SIZE)
       }
-      .width(TITLE_WIDTH)
+      .width(ClassScheduleConstants.TITLE_WIDTH)
       .height(PERCENTAGE_100)
       .backgroundColor(Color.Red)
       .alignItems(HorizontalAlign.Center)
@@ -38,7 +38,7 @@ export default struct LoadScheduleHeader {
             this.showPrompt = false;
           }, 3000)
         })
-        .width(ICON_WIDTH)
+        .width(ClassScheduleConstants.ICON_WIDTH)
     }
     .width(PERCENTAGE_100)
     .height(HEADER_HEIGHT)
