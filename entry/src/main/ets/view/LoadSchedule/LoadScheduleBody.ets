@@ -28,6 +28,7 @@ export default struct LoadScheduleBody {
           Button('刷新')
             .onClick(() => {
               console.info('Refresh button clicked');
+              webview.WebCookieManager.clearAllCookiesSync();
               this.controller.refresh(); // 刷新 Web 页面
             })
             .width(50)// 按钮宽度

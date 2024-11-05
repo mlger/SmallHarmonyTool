@@ -7,12 +7,17 @@ import CommonConstants from "../../common/constants/CommonConstants";
 import ClassScheduleTable from '../../common/database/tables/ClassScheduleTable'
 import { JSON } from '@kit.ArkTS';
 import { plainToClass } from 'class-transformer';
-import { http_schedule_data } from '../../viewmodel/httpGetClassScheduleData'
+import { http_schedule_data } from '../../viewmodel/ClassSchedule/httpGetClassScheduleData'
+import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel'
+import { prompt } from '@kit.ArkUI';
+
 
 @Component
 export default struct LoadScheduleHeader {
   @State showPrompt: boolean = false;
   @State cookie: string = "";
+  private classScheduleTable = new ClassScheduleTable(() => {
+  });
   week_now: number = 8;
 
   build() {
@@ -51,7 +56,7 @@ export default struct LoadScheduleHeader {
       this.cookie = webview.WebCookieManager.fetchCookieSync(CommonConstants.SERVER)
       console.info("lggcookie: " + this.cookie)
 
-      const dataArray: http_schedule_data[] = [];
+      const dataArray: CourseData[] = [];
       for (let i = 1; i <= 1; i++) {
         const data = await httpRequest.request(
           CommonConstants.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + i,
@@ -67,20 +72,38 @@ export default struct LoadScheduleHeader {
         if (!ParseData.success) {
           throw new Error("Failed to get schedule data");
         }
-        dataArray.push(ParseData)
+        for (let j = 0; j < ParseData.datas.pkjgList.length; j++) {
+          console.log(j.toString());  // 输出当前索引，便于调试
+          const raw_data = ParseData.datas.pkjgList[j]; // 获取当前项的数据
+          dataArray.push(new CourseData(
+            -1,
+            i,
+            raw_data.KCMC,
+            raw_data.JASDM,
+            raw_data.SKJSXM,
+            raw_data.ZCMC,
+            raw_data.XQ,
+            raw_data.KSJCDM,
+            raw_data.JSJCDM));
+        }
+      }
+      // 1. clear the database
+      this.classScheduleTable.deleteAllData(()=>{});
+      console.info("dataArray: ", dataArray.toString())
 
-
+      // 2. store res in the database
+      for (let i = 0; i < dataArray.length; i++) {
+        this.classScheduleTable.insertData(dataArray[i], (id:number) => {
+          dataArray[i].id = id;
+        });
       }
 
-
-      /*
-       after successfully get res:
-       1. clear the database
-       2. store res in the database
-       3. clear the cookie
-       4. return to the main page
-      */
+      // 3. clear the cookie
+      // webview.WebCookieManager.clearAllCookiesSync()
+      // 4. return to the main page
+      router.back();
     } catch (error) {
+      prompt.showToast({message: ClassScheduleConstants.LOAD_ERROR_MESSAGE, bottom: CommonConstants.PROMPT_BOTTOM});
     }
   }
 }

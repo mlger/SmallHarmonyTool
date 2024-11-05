@@ -1,8 +1,20 @@
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 import { PERCENTAGE_100 } from "../../common/constants/Constants"
+import ClassScheduleTable from "../../common/database/tables/ClassScheduleTable";
+import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel'
 
 @Component
 export default struct ScheduleBody {
+  private classScheduleTable = new ClassScheduleTable(() => {
+  });
+  @State courses: CourseData[] =  [];
+
+  aboutToAppear(): void {
+    this.classScheduleTable.getDataByWeek(1, (result: CourseData[])=>{
+      this.courses = result;
+    });
+  }
+
   build() {
     Row() {
       // TIME

@@ -1,4 +1,4 @@
-import { ClassScheduleTable } from '../../viewmodel/ClassScheduleInterface'
+import { ClassScheduleTable } from '../../viewmodel/ClassSchedule/ClassScheduleInterface'
 
 export default class ClassScheduleConstants {
   static readonly TIME_WIDTH = '11.1%';
@@ -14,9 +14,11 @@ export default class ClassScheduleConstants {
    */
   static readonly CLASS_SCHEDULE_TABLE: ClassScheduleTable = {
     tableName: 'ClassScheduleTable',
-    sqlCreate: 'CREATE TABLE IF NOT EXISTS accountTable(id INTEGER PRIMARY KEY AUTOINCREMENT, ' + '' +
-      'name TEXT, location TEXT, teacher TEXT, weeks TEXT, week_day INTEGER, begin_time INTEGER, ' +
+    sqlCreate: 'CREATE TABLE IF NOT EXISTS ClassScheduleTable (id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+      'week INTEGER, name TEXT, location TEXT, teacher TEXT, weeks TEXT, week_day INTEGER, begin_time INTEGER, ' +
       'end_time INTEGER)',
-    columns: ['id', 'name', 'location', 'teacher', 'weeks', 'week_day', 'begin_time', 'end_time']
+    columns: ['id', 'week', 'name', 'location', 'teacher', 'weeks', 'week_day', 'begin_time', 'end_time']
   };
+  static readonly LOAD_ERROR_MESSAGE = '导入失败, 请检查统一身份验证, 并尝试刷新';
 }
+

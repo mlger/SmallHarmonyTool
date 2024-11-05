@@ -2,7 +2,7 @@ import Rdb from '../Rdb'
 import relationalStore from '@ohos.data.relationalStore';
 
 import ClassScheduleConstants from "../../constants/ClassScheduleConstants";
-import { CourseData } from '../../../viewmodel/ClassScheduleDataModel'
+import { CourseData } from '../../../viewmodel/ClassSchedule/ClassScheduleDataModel'
 
 export default class ClassScheduleTable {
   private classScheduleTable = new Rdb(
@@ -25,6 +25,7 @@ export default class ClassScheduleTable {
     this.classScheduleTable.insertData(valueBucket, callback);
   }
 
+
   deleteData(course: CourseData, callback: Function) {
     let predicates = new relationalStore.RdbPredicates(ClassScheduleConstants.CLASS_SCHEDULE_TABLE.tableName);
     predicates.equalTo('id', course.id);
@@ -36,10 +37,12 @@ export default class ClassScheduleTable {
     this.classScheduleTable.deleteData(predicates, callback);
   }
 
-  getAllData(callback: Function) {
+  getDataByWeek(week: number, callback: Function) {
     let predicates = new relationalStore.RdbPredicates(ClassScheduleConstants.CLASS_SCHEDULE_TABLE.tableName);
+    predicates.equalTo('week', week);
     this.classScheduleTable.query(predicates, callback);
   }
+
 }
 
 function generateBucket(course: CourseData): relationalStore.ValuesBucket {

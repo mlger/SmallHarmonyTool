@@ -9,16 +9,11 @@ export default class CommonConstants {
   static readonly SUCCESS_CODE: number = 200;
   static readonly READ_TIMEOUT: number = 50000;
   static readonly CONNECT_TIMEOUT: number = 50000;
-
   /**
    * Log tag.
    */
   static readonly RDB_DOMAIN = 0x01;
   static readonly RDB_TAG = '[Debug.Rdb]';
-
-
-
-
   /**
    * Rdb database config.
    */
@@ -26,4 +21,6 @@ export default class CommonConstants {
     name: 'database.db',
     securityLevel: relationalStore.SecurityLevel.S1
   };
+
+  static readonly PROMPT_BOTTOM = '70vp';
 }

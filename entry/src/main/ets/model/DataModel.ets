@@ -1,5 +1,5 @@
 import ToolBarData from '../viewmodel/ToolBarData';
-import {ClassTime} from '../viewmodel/ClassScheduleDataModel'
+import {ClassTime} from '../viewmodel/ClassSchedule/ClassScheduleDataModel'
 
 export default class DataModel {
   public static readonly TOOL_BAR: ToolBarData[] = [
@@ -72,5 +72,7 @@ export default class DataModel {
       begin_time: '20:30',
       end_time: '21:20',
     }
-  ]
+  ];
+
+  public static num: number[] = [];
 }

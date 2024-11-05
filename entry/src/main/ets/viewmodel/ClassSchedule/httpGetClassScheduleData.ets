@@ -1,4 +1,5 @@
 import { Type } from "class-transformer";
+import { CourseData } from "./ClassScheduleDataModel";
 
 export class json_raw_class_data {
   BJDM: string = "";
@@ -17,6 +18,7 @@ export class json_raw_class_data {
   XKBZ: string = "";
   BYBZ: number = 0;
   ZCMC: string = "";
+
 }
 
 export class json_datas {
