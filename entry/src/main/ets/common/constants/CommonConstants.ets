@@ -14,6 +14,7 @@ export default class CommonConstants {
    */
   static readonly RDB_DOMAIN = 0x01;
   static readonly RDB_TAG = '[Debug.Rdb]';
+  static readonly TABLE_TAG = '[Debug.ClassScheduleTable]';
   /**
    * Rdb database config.
    */

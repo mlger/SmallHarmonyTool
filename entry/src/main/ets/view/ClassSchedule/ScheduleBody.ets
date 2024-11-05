@@ -7,12 +7,14 @@ import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel
 export default struct ScheduleBody {
   private classScheduleTable = new ClassScheduleTable(() => {
   });
-  @State courses: CourseData[] =  [];
+  @State courses: CourseData[] = [];
 
   aboutToAppear(): void {
-    this.classScheduleTable.getDataByWeek(1, (result: CourseData[])=>{
-      this.courses = result;
+    this.classScheduleTable.getDataByWeek(1, (result: CourseData[]) => {
+      console.info("result length: ", result.length)
+      console.info("result: ", result.toString())
     });
+    console.info("courses: ", this.courses.length)
   }
 
   build() {

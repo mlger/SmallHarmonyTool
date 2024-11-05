@@ -57,7 +57,7 @@ export default struct LoadScheduleHeader {
       console.info("lggcookie: " + this.cookie)
 
       const dataArray: CourseData[] = [];
-      for (let i = 1; i <= 1; i++) {
+      for (let i = 1; i <= 10; i++) {
         const data = await httpRequest.request(
           CommonConstants.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + i,
           {
@@ -100,8 +100,14 @@ export default struct LoadScheduleHeader {
 
       // 3. clear the cookie
       // webview.WebCookieManager.clearAllCookiesSync()
+      // test find
+      this.classScheduleTable.getDataByWeek(1, (result: CourseData[]) => {
+        console.info("result length: ", result.length)
+        console.info("result: ", result.toString())
+      });
       // 4. return to the main page
       router.back();
+
     } catch (error) {
       prompt.showToast({message: ClassScheduleConstants.LOAD_ERROR_MESSAGE, bottom: CommonConstants.PROMPT_BOTTOM});
     }

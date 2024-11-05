@@ -16,15 +16,15 @@ export class CourseData {
   end_time: number = 1;
 
   constructor(
-    id: number,
-    week: number,
-    name: string,
-    location: string,
-    teacher: string,
-    weeks: string,
-    week_day: number,
-    begin_time: number,
-    end_time: number) {
+    id: number  = 0,
+    week: number = 0,
+    name: string = '',
+    location: string = '',
+    teacher: string = '',
+    weeks: string = '',
+    week_day: number = 0,
+    begin_time: number = 0,
+    end_time: number = 0) {
     this.id = id;
     this.week = week;
     this.name = name;
