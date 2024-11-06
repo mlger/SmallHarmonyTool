@@ -1,18 +1,20 @@
 import ScheduleHeader from './ScheduleHeader'
 import ScheduleDate from './ScheduleDate'
 import ScheduleBody from './ScheduleBody'
-import { HEADER_HEIGHT, PERCENTAGE_100 } from '../../common/constants/Constants'
+import { PERCENTAGE_100 } from '../../common/constants/Constants'
+import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel';
 
 @Component
 export default struct ClassSchedule {
-  aboutToAppear() {
-  }
+  @Prop courses: CourseData[] = [];
 
   build() {
     Column() {
       ScheduleHeader()
       ScheduleDate()
-      ScheduleBody()
+      ScheduleBody({
+        courses: this.courses
+      })
     }
     .width(PERCENTAGE_100)
     .height(PERCENTAGE_100)

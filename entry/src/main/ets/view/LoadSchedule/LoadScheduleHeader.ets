@@ -2,7 +2,7 @@ import router from '@ohos.router';
 import http from '@ohos.net.http';
 import { webview } from "@kit.ArkWeb";
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
-import { HEADER_HEIGHT, PERCENTAGE_100 } from "../../common/constants/Constants";
+import {  PERCENTAGE_100 } from "../../common/constants/Constants";
 import CommonConstants from "../../common/constants/CommonConstants";
 import ClassScheduleTable from '../../common/database/tables/ClassScheduleTable'
 import { JSON } from '@kit.ArkTS';
@@ -46,7 +46,7 @@ export default struct LoadScheduleHeader {
         .width(ClassScheduleConstants.ICON_WIDTH)
     }
     .width(PERCENTAGE_100)
-    .height(HEADER_HEIGHT)
+    .height(ClassScheduleConstants.HEADER_HEIGHT)
     .backgroundColor(Color.Yellow)
   }
 
@@ -100,11 +100,6 @@ export default struct LoadScheduleHeader {
 
       // 3. clear the cookie
       // webview.WebCookieManager.clearAllCookiesSync()
-      // test find
-      this.classScheduleTable.getDataByWeek(1, (result: CourseData[]) => {
-        console.info("result length: ", result.length)
-        console.info("result: ", result.toString())
-      });
       // 4. return to the main page
       router.back();
 

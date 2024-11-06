@@ -1,4 +1,4 @@
-import { ClassScheduleStyle, HEADER_HEIGHT, PERCENTAGE_100, } from "../../common/constants/Constants"
+import { ClassScheduleStyle, PERCENTAGE_100, } from "../../common/constants/Constants"
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 import router from '@ohos.router';
 import ClassScheduleTable from "../../common/database/tables/ClassScheduleTable";
@@ -8,14 +8,15 @@ import { CourseData } from "../../viewmodel/ClassSchedule/ClassScheduleDataModel
 export default struct ScheduleHeader {
   private classScheduleTable = new ClassScheduleTable(() => {
   });
+  @Prop courses: CourseData[] = [];
+
   build() {
     Row() {
       // Blank()
       //   .width(ClassScheduleConstants.ICON_WIDTH)
 
       Button("导入课表")
-        .onClick(()=>{
-          this.query()
+        .onClick(() => {
         })
         .width(ClassScheduleConstants.ICON_WIDTH)
 
@@ -36,21 +37,9 @@ export default struct ScheduleHeader {
         .width(ClassScheduleConstants.ICON_WIDTH)
     }
     .width(PERCENTAGE_100)
-    .height(HEADER_HEIGHT)
+    .height(ClassScheduleConstants.HEADER_HEIGHT)
     .backgroundColor(Color.Yellow)
 
   }
 
-  aboutToAppear(): void {
-    this.classScheduleTable.getDataByWeek(1, (result: CourseData[]) => {
-      console.info("result length: ", result.length)
-      console.info("result: ", result.toString())
-    });
-  }
-  query(): void {
-    this.classScheduleTable.getDataByWeek(1, (result: CourseData[]) => {
-      console.info("result length: ", result.length)
-      console.info("result: ", result.toString())
-    });
-  }
 }

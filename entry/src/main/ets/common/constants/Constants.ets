@@ -19,7 +19,6 @@ enum AppFontSize {
 
 export { AppFontSize, AppFontWeight };
 
-export const HEADER_HEIGHT = '10%';
 
 
 /**

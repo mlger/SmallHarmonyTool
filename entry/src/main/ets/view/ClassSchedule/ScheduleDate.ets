@@ -1,4 +1,6 @@
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
+import { PERCENTAGE_100 } from "../../common/constants/Constants";
+import { CourseData } from "../../viewmodel/ClassSchedule/ClassScheduleDataModel";
 
 @Component
 export default struct ScheduleDate {
@@ -7,20 +9,23 @@ export default struct ScheduleDate {
   build() {
     Row() {
       Column() {
-      }.width(ClassScheduleConstants.TIME_WIDTH).height(ClassScheduleConstants.DATE_HEIGHT).backgroundColor(0xF5DEB3)
+      }
+      .width(ClassScheduleConstants.TIME_WIDTH)
+      .height(PERCENTAGE_100)
+      .backgroundColor(0xF5DEB3)
 
       // 使用ForEach循环遍历颜色数组
       ForEach(this.colors, (color: Color, index: number) => {
         Column() {
         }
         .width(ClassScheduleConstants.CLASS_WIDTH)
-        .height(ClassScheduleConstants.DATE_HEIGHT)
+        .height(PERCENTAGE_100)
         .backgroundColor(color)
       })
 
     }
     .width('100%')
-    .height(30)
+    .height(ClassScheduleConstants.DATE_HEIGHT)
     .alignItems(VerticalAlign.Bottom)
     .backgroundColor('rgb(242,242,242)')
 

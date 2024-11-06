@@ -1,11 +1,15 @@
 import { ClassScheduleTable } from '../../viewmodel/ClassSchedule/ClassScheduleInterface'
 
 export default class ClassScheduleConstants {
+  // HEIGHT
+  static readonly HEADER_HEIGHT = '10%';
+  static readonly DATE_HEIGHT = '5%';
+  static readonly BODY_HEIGHT = '80%';
+  static readonly PER_CLASS_HEIGHT = '9%';
+
   static readonly TIME_WIDTH = '11.1%';
   static readonly CLASS_SUM_WIDTH = '88.9%';
   static readonly CLASS_WIDTH = '12.7%';
-  static readonly DATE_HEIGHT = 30;
-  static readonly CLASS_HEIGHT = 30;
   static readonly ICON_WIDTH = '10%';
   static readonly TITLE_WIDTH = '80%';
   static readonly TITLE_FONT_SIZE = 24;

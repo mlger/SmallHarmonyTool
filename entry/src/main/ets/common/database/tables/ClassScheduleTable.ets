@@ -62,9 +62,9 @@ export default class ClassScheduleTable {
           tmp.end_time = resultSet.getLong(resultSet.getColumnIndex('end_time'));
           result[i] = tmp;
           resultSet.goToNextRow();
-          console.log("tmpid:", tmp.id);
+          // console.log("tmpid:", tmp.id);
         }
-        console.info("query: ", result)
+        // console.info("query: ", result)
         callback(result);
       }
     });
