@@ -32,6 +32,16 @@ export default class CommonConstants {
   // FONT
   static readonly TITLE_FONT_SIZE = 24;
   static readonly SECOND_TITLE_FONT_SIZE = 14;
-  static readonly ICON_WIDTH = '10%';
-  static readonly TITLE_WIDTH = '80%';
+  static readonly ICON_WIDTH = '7%';
+  static readonly TITLE_WIDTH = '86%';
+
+  /**
+   * String for input content.
+   */
+  static readonly OFFSET_X: number = 0;
+
+  /**
+   * String for input content.
+   */
+  static readonly OFFSET_Y: number = -25;
 }

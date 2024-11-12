@@ -48,4 +48,17 @@ export default class GetWeekAndDate {
     return weekDays;
   }
 
+  /**
+   * Check if a given date is the same as today
+   * @param date The date to compare with today
+   * @returns True if the given date is the same as today, otherwise false
+   */
+  public static isSameToday(date: Date): boolean {
+    const today = new Date();
+    return (
+      date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate()
+    );
+  }
 }

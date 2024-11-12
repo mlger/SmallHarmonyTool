@@ -3,18 +3,26 @@ import { PERCENTAGE_100 } from "../../common/constants/Constants"
 import ClassScheduleTable from "../../common/database/tables/ClassScheduleTable";
 import { ClassTime, CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel'
 import DataModel from '../../model/DataModel'
+import { ClassInfoDialog } from "./ClassInfoDialog";
+import CommonConstants from "../../common/constants/CommonConstants";
 
 @Component
 export default struct ScheduleBody {
   @Prop courses: CourseData[] = [];
   @State classTime: ClassTime[] = [];
+  @State selectedCourse: CourseData | null = null;
+  classInfoDialogController: CustomDialogController | null = new CustomDialogController({
+    builder: ClassInfoDialog({ course: this.selectedCourse }),
+    alignment: DialogAlignment.Center,
+    offset: { dx: CommonConstants.OFFSET_X, dy: CommonConstants.OFFSET_Y },
+    customStyle: true
+
+  });
 
   build() {
     Row() {
       // TIME
       Column() {
-        // Row().width(PERCENTAGE_100).height(ClassScheduleConstants.CLASS_HEIGHT).backgroundColor(Color.Red)
-        // Row().width(PERCENTAGE_100).height(ClassScheduleConstants.CLASS_HEIGHT).backgroundColor(Color.Blue)
         ForEach(this.classTime, (item: ClassTime, index: number) => {
           Column() {
             Text(item.id.toString())
@@ -42,16 +50,17 @@ export default struct ScheduleBody {
                 .width(PERCENTAGE_100)
                 .height('2%')
 
-              Text(item.name+'@'+item.location)
+              Text(item.name + '@' + item.location)
                 .fontSize(12)
                 .fontColor(Color.White)
-
             }
             .backgroundColor(ClassScheduleConstants.getNewColor())
             .width(PERCENTAGE_100)
             .height(PERCENTAGE_100)
             .borderRadius(6)
             .onClick(() => {
+              this.selectedCourse = item;
+              this.classInfoDialogController?.open();
             })
 
           }

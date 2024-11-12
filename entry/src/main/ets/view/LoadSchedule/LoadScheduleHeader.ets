@@ -23,7 +23,7 @@ export default struct LoadScheduleHeader {
 
   build() {
     Row() {
-      Button("返回")
+      Image($rawfile('index/back.svg'))
         .onClick(() => {
           router.back()
         })
@@ -38,9 +38,8 @@ export default struct LoadScheduleHeader {
       }
       .width(CommonConstants.TITLE_WIDTH)
 
-      Button("导入")
+      Image($rawfile('index/ok.svg'))
         .onClick(() => {
-          console.info('Import button clicked');
           this.getScheduleData();
         })
         .width(CommonConstants.ICON_WIDTH)

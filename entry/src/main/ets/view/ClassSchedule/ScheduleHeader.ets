@@ -8,16 +8,11 @@ import CommonConstants from "../../common/constants/CommonConstants";
 
 @Component
 export default struct ScheduleHeader {
-  @Prop selectedWeek: number = 0;
+  @Link selectedWeek: number;
 
   build() {
     Row() {
-      // Blank()
-      //   .width(ClassScheduleConstants.ICON_WIDTH)
-
-      Button("导入课表")
-        .onClick(() => {
-        })
+      Blank()
         .width(CommonConstants.ICON_WIDTH)
 
       Column() {
@@ -30,7 +25,7 @@ export default struct ScheduleHeader {
       .alignItems(HorizontalAlign.Center)
       .width(CommonConstants.TITLE_WIDTH)
 
-      Button("导入课表")
+      Image($rawfile('index/download.svg'))
         .onClick(() => {
           router.pushUrl({ url: 'pages/LoadSchedulePage' })
         })

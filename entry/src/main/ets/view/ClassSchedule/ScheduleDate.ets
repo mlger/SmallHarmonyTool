@@ -1,6 +1,7 @@
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 import { PERCENTAGE_100 } from "../../common/constants/Constants";
 import { CourseData } from "../../viewmodel/ClassSchedule/ClassScheduleDataModel";
+import GetWeekAndDate from "../../viewmodel/ClassSchedule/GetWeekAndDate";
 
 @Component
 export default struct ScheduleDate {
@@ -32,6 +33,7 @@ export default struct ScheduleDate {
         }
         .width(ClassScheduleConstants.CLASS_WIDTH)
         .height(PERCENTAGE_100)
+        .backgroundColor(GetWeekAndDate.isSameToday(date)? ClassScheduleConstants.getNewColor(): Color.White);
       })
 
     }

@@ -8,9 +8,9 @@ import WeekSelector from './WeekSelector';
 
 @Component
 export default struct ClassSchedule {
-  @Link courses: CourseData[] = [];
-  @Link selectedWeek: number = 1;
-  @Link dates: Date[] = GetWeekAndDate.getSevenDaysOfCurrentWeek(this.selectedWeek);
+  @Link courses: CourseData[];
+  @Link selectedWeek: number;
+  @Link dates: Date[];
 
 
   build() {
@@ -19,6 +19,9 @@ export default struct ClassSchedule {
         selectedWeek: this.selectedWeek,
       })
       WeekSelector({
+        selectedWeek: this.selectedWeek,
+        courses: this.courses,
+        dates: this.dates
       })
       ScheduleDate({
         dates: this.dates
