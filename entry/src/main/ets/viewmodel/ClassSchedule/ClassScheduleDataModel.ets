@@ -31,9 +31,9 @@ export class CourseData {
     this.location = location;
     this.teacher = teacher;
     this.weeks = weeks;
-    this.week_day = week_day;
-    this.begin_time = begin_time;
-    this.end_time = end_time;
+    this.week_day = week_day - 1;
+    this.begin_time = begin_time - 1;
+    this.end_time = end_time - 1;
   }
 
   public toString(): string {

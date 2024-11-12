@@ -6,8 +6,6 @@ import DataModel from '../../model/DataModel'
 
 @Component
 export default struct ScheduleBody {
-  private classScheduleTable = new ClassScheduleTable(() => {
-  });
   @Prop courses: CourseData[] = [];
   @State classTime: ClassTime[] = [];
 
@@ -37,20 +35,31 @@ export default struct ScheduleBody {
       .height(PERCENTAGE_100)
 
       Grid() {
-        GridItem() {
-          Column()
-            .backgroundColor(Color.Green)
-            .width('100%')
-            .height('100%')
+        ForEach(this.courses, (item: CourseData, index: number) => {
+          GridItem() {
+            Column() {
+              Blank()
+                .width(PERCENTAGE_100)
+                .height('2%')
+
+              Text(item.name+'@'+item.location)
+                .fontSize(12)
+                .fontColor(Color.White)
+
+            }
+            .backgroundColor(ClassScheduleConstants.getNewColor())
+            .width(PERCENTAGE_100)
+            .height(PERCENTAGE_100)
             .borderRadius(6)
-            .onClick(()=>{
-              console.info("lggHHHH");
+            .onClick(() => {
             })
-        }
-        .columnStart(1)
-        .columnEnd(1)
-        .rowStart(1)
-        .rowEnd(2)
+
+          }
+          .columnStart(item.week_day)
+          .columnEnd(item.week_day)
+          .rowStart(item.begin_time)
+          .rowEnd(item.end_time)
+        })
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr')
@@ -64,5 +73,4 @@ export default struct ScheduleBody {
   aboutToAppear(): void {
     this.classTime = DataModel.CLASS_TIME;
   }
-
 }

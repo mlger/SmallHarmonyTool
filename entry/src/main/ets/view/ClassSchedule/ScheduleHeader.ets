@@ -1,14 +1,14 @@
 import { ClassScheduleStyle, PERCENTAGE_100, } from "../../common/constants/Constants"
 import ClassScheduleConstants from "../../common/constants/ClassScheduleConstants";
 import router from '@ohos.router';
-import ClassScheduleTable from "../../common/database/tables/ClassScheduleTable";
-import { CourseData } from "../../viewmodel/ClassSchedule/ClassScheduleDataModel";
+import ClassScheduleTable from '../../common/database/tables/ClassScheduleTable';
+import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel';
+import GetWeekAndDate from '../../viewmodel/ClassSchedule/GetWeekAndDate'
+import CommonConstants from "../../common/constants/CommonConstants";
 
 @Component
 export default struct ScheduleHeader {
-  private classScheduleTable = new ClassScheduleTable(() => {
-  });
-  @Prop courses: CourseData[] = [];
+  @Prop selectedWeek: number = 0;
 
   build() {
     Row() {
@@ -18,28 +18,40 @@ export default struct ScheduleHeader {
       Button("导入课表")
         .onClick(() => {
         })
-        .width(ClassScheduleConstants.ICON_WIDTH)
+        .width(CommonConstants.ICON_WIDTH)
 
       Column() {
         Text($r('app.string.class_schedule_title'))
-          .fontSize(ClassScheduleConstants.TITLE_FONT_SIZE)
+          .fontSize(CommonConstants.TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
-        Text("第1周")
+        Text(this.getWeekOutput(this.selectedWeek))
           .fontSize(18)
       }
       .alignItems(HorizontalAlign.Center)
-      .width(ClassScheduleConstants.TITLE_WIDTH)
+      .width(CommonConstants.TITLE_WIDTH)
 
       Button("导入课表")
         .onClick(() => {
           router.pushUrl({ url: 'pages/LoadSchedulePage' })
         })
-        .width(ClassScheduleConstants.ICON_WIDTH)
+        .width(CommonConstants.ICON_WIDTH)
     }
     .width(PERCENTAGE_100)
-    .height(ClassScheduleConstants.HEADER_HEIGHT)
-    .backgroundColor(Color.Yellow)
-
+    .height(CommonConstants.HEADER_HEIGHT)
+    .backgroundColor(CommonConstants.ColorHeader)
+    .shadow({
+      radius: 10,
+      color: Color.Black,
+      offsetX: 0,
+      offsetY: 5,
+    })
   }
 
+  getWeekOutput(week: number): string {
+    let output: string = '第' + week + '周';
+    if (week != GetWeekAndDate.getCurrentWeek()) {
+      output += '[非本周]';
+    }
+    return output;
+  }
 }

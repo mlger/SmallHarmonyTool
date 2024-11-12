@@ -1,4 +1,5 @@
 import ClassSchedule from '../view/ClassSchedule/ClassSchedule'
+import ScheduleHeader from '../view/ClassSchedule/ScheduleHeader'
 import NavViewModel from '../viewmodel/NavViewModel';
 import ToolBarData from '../viewmodel/ToolBarData';
 import ToolBarComponent from '../view/ToolBarComponent';
@@ -6,6 +7,7 @@ import { PERCENTAGE_100, NavPageStyle } from '../common/constants/Constants'
 import { CourseData } from '../viewmodel/ClassSchedule/ClassScheduleDataModel';
 import ClassScheduleTable from '../common/database/tables/ClassScheduleTable';
 import TodoList from '../view/TodoList/TodoList'
+import GetWeekAndDate from '../viewmodel/ClassSchedule/GetWeekAndDate'
 
 const CLASS_SCHEDULE: number = 0;
 const TODO_LIST: number = 1;
@@ -30,10 +32,11 @@ struct NavPage {
   @State toolBarConfigs: ToolBarData[] = []; // bottom navigation data.
   navCurrentPosition: number = NavPageStyle.POSITION_INITIAL;
   private controller: TabsController = new TabsController();
-
   @State courses: CourseData[] = [];
   private classScheduleTable = new ClassScheduleTable(() => {
   });
+  @State selectedWeek: number = GetWeekAndDate.getCurrentWeek();
+  @State dates: Date[] = GetWeekAndDate.getSevenDaysOfCurrentWeek(this.selectedWeek);
 
   aboutToAppear() {
     this.toolBarConfigs = viewModel.loadNavigationTab();
@@ -45,8 +48,12 @@ struct NavPage {
         ForEach(this.toolBarConfigs, (item: ToolBarData, index?: number) => {
           TabContent() {
             if (index === CLASS_SCHEDULE) {
-              ClassSchedule({ courses: this.courses })
-            } else if (index === TODO_LIST){
+              ClassSchedule({
+                courses: this.courses,
+                selectedWeek: this.selectedWeek,
+                dates: this.dates,
+              })
+            } else if (index === TODO_LIST) {
               TodoList()
             }
           }
@@ -69,14 +76,26 @@ struct NavPage {
   }
 
   onPageShow(): void {
-    this.updateSchedule(1);
+    this.updateSchedule(this.selectedWeek);
+  }
+
+  /**
+   * selectedWeek
+   * courses
+   */
+
+  updateSelectedWeek(week: number) {
+    this.selectedWeek = week;
+    this.updateSchedule(week);
+    this.dates = GetWeekAndDate.getSevenDaysOfCurrentWeek(week);
   }
 
   async updateSchedule(week: number) {
-    this.classScheduleTable.getRdbStore(()=> {
+    this.classScheduleTable.getRdbStore(() => {
       this.classScheduleTable.getDataByWeek(week, (result: CourseData[]) => {
         this.courses = result;
       });
     });
   }
+
 }

@@ -81,4 +81,7 @@ export class ClassScheduleStyle {
    * The height of blank.
    */
   static readonly BLANK_HEIGHT: number = 15;
+
 }
+
+

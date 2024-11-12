@@ -4,8 +4,6 @@ export default class CommonConstants {
   /**
    * The host address of the server.
    */
-  static readonly SERVER: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/*default/index.do#/'
-  static readonly SCHEDULE_URL: string = 'https://ehallapp.nju.edu.cn/gsapp/sys/yddwdkbappnju/wdkb/getWeekCourseList.do'
   static readonly SUCCESS_CODE: number = 200;
   static readonly READ_TIMEOUT: number = 50000;
   static readonly CONNECT_TIMEOUT: number = 50000;
@@ -24,4 +22,16 @@ export default class CommonConstants {
   };
 
   static readonly PROMPT_BOTTOM = '70vp';
+
+
+  // HEADER
+  // HEIGHT
+  static readonly HEADER_HEIGHT = '10%';
+  // COLOR
+  static readonly ColorHeader = '#cc3fedd3';
+  // FONT
+  static readonly TITLE_FONT_SIZE = 24;
+  static readonly SECOND_TITLE_FONT_SIZE = 14;
+  static readonly ICON_WIDTH = '10%';
+  static readonly TITLE_WIDTH = '80%';
 }

@@ -10,6 +10,7 @@ import { plainToClass } from 'class-transformer';
 import { http_schedule_data } from '../../viewmodel/ClassSchedule/httpGetClassScheduleData'
 import { CourseData } from '../../viewmodel/ClassSchedule/ClassScheduleDataModel'
 import { prompt } from '@kit.ArkUI';
+import GetWeekAndDate from '../../viewmodel/ClassSchedule/GetWeekAndDate'
 
 
 @Component
@@ -18,7 +19,7 @@ export default struct LoadScheduleHeader {
   @State cookie: string = "";
   private classScheduleTable = new ClassScheduleTable(() => {
   });
-  week_now: number = 8;
+  week_now: number = GetWeekAndDate.getCurrentWeek();
 
   build() {
     Row() {
@@ -26,40 +27,39 @@ export default struct LoadScheduleHeader {
         .onClick(() => {
           router.back()
         })
-        .width(ClassScheduleConstants.ICON_WIDTH)
+        .width(CommonConstants.ICON_WIDTH)
 
       Column() {
         Text($r('app.string.load_schedule_title'))
-          .fontSize(ClassScheduleConstants.TITLE_FONT_SIZE)
+          .fontSize(CommonConstants.TITLE_FONT_SIZE)
+          .fontWeight(FontWeight.Bold)
+        Text(' ')
+          .fontSize(CommonConstants.SECOND_TITLE_FONT_SIZE)
       }
-      .width(ClassScheduleConstants.TITLE_WIDTH)
-      .height(PERCENTAGE_100)
-      .backgroundColor(Color.Red)
-      .alignItems(HorizontalAlign.Center)
-
+      .width(CommonConstants.TITLE_WIDTH)
 
       Button("导入")
         .onClick(() => {
           console.info('Import button clicked');
           this.getScheduleData();
         })
-        .width(ClassScheduleConstants.ICON_WIDTH)
+        .width(CommonConstants.ICON_WIDTH)
     }
     .width(PERCENTAGE_100)
-    .height(ClassScheduleConstants.HEADER_HEIGHT)
-    .backgroundColor(Color.Yellow)
+    .height(CommonConstants.HEADER_HEIGHT)
+    .backgroundColor(CommonConstants.ColorHeader)
   }
 
   async getScheduleData() {
     try {
       const httpRequest = http.createHttp();
-      this.cookie = webview.WebCookieManager.fetchCookieSync(CommonConstants.SERVER)
+      this.cookie = webview.WebCookieManager.fetchCookieSync(ClassScheduleConstants.SERVER)
       console.info("lggcookie: " + this.cookie)
 
       const dataArray: CourseData[] = [];
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 19; i++) {
         const data = await httpRequest.request(
-          CommonConstants.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + i,
+          ClassScheduleConstants.SCHEDULE_URL + "?xssf=bks&xnxqdm=2024-2025-1&zc=" + i,
           {
             method: http.RequestMethod.POST,
             header: {
@@ -79,7 +79,7 @@ export default struct LoadScheduleHeader {
             -1,
             i,
             raw_data.KCMC,
-            raw_data.JASDM,
+            raw_data.JASMC,
             raw_data.SKJSXM,
             raw_data.ZCMC,
             raw_data.XQ,
