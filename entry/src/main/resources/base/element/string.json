@@ -11,6 +11,34 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "http_response_error",
+      "value": "Request error, please check if there is a network."
+    },
+    {
+      "name": "nav_class_schedule",
+      "value": "课表"
+    },
+    {
+      "name": "nav_todolist",
+      "value": "待办"
+    },
+    {
+      "name": "class_schedule_title",
+      "value": "南哪课表"
+    },
+    {
+      "name": "load_schedule_title",
+      "value": "统一认证登录"
+    },
+    {
+      "name": "TodoListTitle",
+      "value": "待办"
+    },
+    {
+      "name": "reason",
+      "value": "Connect to the network."
     }
   ]
 }

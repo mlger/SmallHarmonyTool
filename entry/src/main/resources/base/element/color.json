@@ -3,6 +3,14 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "index_navigation_selected_text",
+      "value": "#4083c9"
+    },
+    {
+      "name": "text",
+      "value": "#2c2c2c"
     }
   ]
 }
