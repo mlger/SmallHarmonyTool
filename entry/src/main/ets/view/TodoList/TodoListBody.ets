@@ -49,6 +49,7 @@ export default struct TodoListBody {
             ToDoItem({ todo: item })
           })
         }
+        .height(PERCENTAGE_100)
       }
 
       Button() {
@@ -63,5 +64,6 @@ export default struct TodoListBody {
       })
     }
     .height(CommonConstants.MAIN_HEIGHT)
+    .width(PERCENTAGE_100)
   }
 }

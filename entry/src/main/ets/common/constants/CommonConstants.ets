@@ -41,7 +41,7 @@ export default class CommonConstants {
    * String for input content.
    */
   static readonly OFFSET_Y: number = -25;
-  static readonly EDIT_POSITION_X = '40%';
+  static readonly EDIT_POSITION_X = '80%';
   static readonly EDIT_POSITION_Y = '5%';
 
   static toStringData(data: TodoData): string {

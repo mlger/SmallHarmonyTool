@@ -18,9 +18,13 @@ export default struct AddTodoDialog {
         .onChange((value: string) => {
           this.inputContent = value;
         })
+        .height('10%')
       Button() {
         Text("Confirm")
       }
+      .width(80)
+      .height(30)
+
       .onClick(() => {
         if (this.inputContent === "") {
           prompt.showToast({ message: TodoListConstants.NO_NULL_INPUT, bottom: CommonConstants.PROMPT_BOTTOM })
