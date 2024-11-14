@@ -47,15 +47,16 @@ struct NavPage {
       Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
         ForEach(this.toolBarConfigs, (item: ToolBarData, index?: number) => {
           TabContent() {
-            if (index === CLASS_SCHEDULE) {
-              ClassSchedule({
-                courses: this.courses,
-                selectedWeek: this.selectedWeek,
-                dates: this.dates,
-              })
-            } else if (index === TODO_LIST) {
-              TodoList()
-            }
+            // if (index === CLASS_SCHEDULE) {
+            //   ClassSchedule({
+            //     courses: this.courses,
+            //     selectedWeek: this.selectedWeek,
+            //     dates: this.dates,
+            //   })
+            // } else if (index === TODO_LIST) {
+            //   TodoList()
+            // }
+            TodoList()
           }
         }, (item: ToolBarData) => JSON.stringify(item))
       }.setTabStyle()

@@ -1,4 +1,5 @@
 import relationalStore from '@ohos.data.relationalStore';
+import { TodoData } from '../../viewmodel/TodoList/TodoListDataModel';
 
 export default class CommonConstants {
   /**
@@ -20,13 +21,11 @@ export default class CommonConstants {
     name: 'database.db',
     securityLevel: relationalStore.SecurityLevel.S1
   };
-
   static readonly PROMPT_BOTTOM = '70vp';
-
-
   // HEADER
   // HEIGHT
   static readonly HEADER_HEIGHT = '10%';
+  static readonly MAIN_HEIGHT = '90%';
   // COLOR
   static readonly ColorHeader = '#cc3fedd3';
   // FONT
@@ -34,14 +33,19 @@ export default class CommonConstants {
   static readonly SECOND_TITLE_FONT_SIZE = 14;
   static readonly ICON_WIDTH = '7%';
   static readonly TITLE_WIDTH = '86%';
-
   /**
    * String for input content.
    */
   static readonly OFFSET_X: number = 0;
-
   /**
    * String for input content.
    */
   static readonly OFFSET_Y: number = -25;
+  static readonly EDIT_POSITION_X = '40%';
+  static readonly EDIT_POSITION_Y = '5%';
+
+  static toStringData(data: TodoData): string {
+    return `id: ${data.id}, content: ${data.content}, isComplete: ${data.isComplete}`;
+
+  }
 }

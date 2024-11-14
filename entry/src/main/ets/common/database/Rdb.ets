@@ -67,6 +67,7 @@ export default class Rdb {
       this.rdbStore.insert(this.tableName, valueBucket, (err, ret) => {
         if (err) {
           this.logger.error(CommonConstants.RDB_TAG, `insertData() failed, err: ${err}`);
+          this.logger.error(this.tableName)
           callback(resFlag);
           return;
         }

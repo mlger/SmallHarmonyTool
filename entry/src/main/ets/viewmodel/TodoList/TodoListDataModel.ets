@@ -1,4 +1,6 @@
 export class TodoData {
-  id: number = 0;
-  affair: string = '';
+  id: number = -1;
+  content: string = '';
+  isComplete: number = 0;
+
 }

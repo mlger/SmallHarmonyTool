@@ -5,7 +5,6 @@ import { PERCENTAGE_100 } from "../../common/constants/Constants"
 export default struct TodoListHeader {
 
   build() {
-
     Row() {
       Blank()
         .width(CommonConstants.ICON_WIDTH)

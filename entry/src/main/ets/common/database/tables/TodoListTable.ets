@@ -23,6 +23,7 @@ export default class TodoListTable {
   }
 
   insertData(todo: TodoData, callback: Function) {
+    console.info(CommonConstants.toStringData(todo))
     const valueBucket: relationalStore.ValuesBucket = generateBucket(todo);
     this.todoListTable.insertData(valueBucket, callback);
   }
@@ -34,15 +35,10 @@ export default class TodoListTable {
     this.todoListTable.deleteData(predicates, callback);
   }
 
-  deleteAllData(callback: Function) {
+  getAllData(callback: Function) {
     let predicates = new relationalStore.RdbPredicates(TodoListConstants.TODO_LIST_TABLE.tableName);
-    this.todoListTable.deleteData(predicates, callback);
-  }
-
-  getDataByWeek(week: number, callback: Function) {
-    let predicates = new relationalStore.RdbPredicates(TodoListConstants.TODO_LIST_TABLE.tableName);
-    predicates.equalTo('week', week);
     this.todoListTable.query(predicates, (resultSet: relationalStore.ResultSet) => {
+
       let count: number = resultSet.rowCount;
       if (count === 0 || typeof count === 'string') {
         console.log(`${CommonConstants.TABLE_TAG}` + 'Query no results!');
@@ -53,20 +49,33 @@ export default class TodoListTable {
         for (let i = 0; i < count; i++) {
           let tmp: TodoData = new TodoData();
           tmp.id = resultSet.getLong(resultSet.getColumnIndex('id'));
-          tmp.affair = resultSet.getString(resultSet.getColumnIndex('affair'));
+          tmp.content = resultSet.getString(resultSet.getColumnIndex('content'));
+          tmp.isComplete = resultSet.getLong(resultSet.getColumnIndex('isComplete'));
           result[i] = tmp;
           resultSet.goToNextRow();
-          // console.log("tmpid:", tmp.id);
         }
-        // console.info("query: ", result)
         callback(result);
       }
     });
+  }
+
+  deleteAllData(callback: Function) {
+    let predicates = new relationalStore.RdbPredicates(TodoListConstants.TODO_LIST_TABLE.tableName);
+    this.todoListTable.deleteData(predicates, callback);
+  }
+
+  updateData(todo: TodoData, callback: Function) {
+    let predicates = new relationalStore.RdbPredicates(TodoListConstants.TODO_LIST_TABLE.tableName);
+    predicates.equalTo('id', todo.id);
+    const valueBucket: relationalStore.ValuesBucket = generateBucket(todo);
+    this.todoListTable.updateData(predicates, valueBucket, callback);
   }
 }
 
 function generateBucket(todo: TodoData): relationalStore.ValuesBucket {
   let obj: relationalStore.ValuesBucket = {};
-  obj.affair = todo.affair;
+  obj.content = todo.content;
+  obj.isComplete = todo.isComplete;
+
   return obj;
 }

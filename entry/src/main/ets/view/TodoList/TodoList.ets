@@ -1,35 +1,21 @@
 import CommonConstants from "../../common/constants/CommonConstants"
 import { PERCENTAGE_100 } from "../../common/constants/Constants"
 import TodoListConstants from "../../common/constants/TodoListConstants"
+import TodoListTable from "../../common/database/tables/TodoListTable"
+import { TodoData } from "../../viewmodel/TodoList/TodoListDataModel"
+import TodoListBody from "./TodoListBody"
+import TodoListHeader from "./TodoListHeader"
 
 @Component
 export default struct TodoList {
   build() {
     Column() {
-
-      Row() {
-        Blank()
-          .width(CommonConstants.ICON_WIDTH)
-
-        Column() {
-          Text($r('app.string.TodoListTitle'))
-            .fontSize(CommonConstants.TITLE_FONT_SIZE)
-            .fontWeight(FontWeight.Bold)
-          Text(' ')
-            .fontSize(CommonConstants.SECOND_TITLE_FONT_SIZE)
-        }
-        // .alignItems(HorizontalAlign.Center)
-        .width(CommonConstants.TITLE_WIDTH)
-
-        Blank()
-          .width(CommonConstants.ICON_WIDTH)
-      }
-      .width(PERCENTAGE_100)
-      .height(CommonConstants.HEADER_HEIGHT)
-      .backgroundColor(CommonConstants.ColorHeader)
-
+      TodoListHeader()
+      TodoListBody()
 
     }
     .height(PERCENTAGE_100)
   }
+
+
 }
