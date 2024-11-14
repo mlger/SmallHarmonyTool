@@ -26,7 +26,10 @@ export default struct TodoList {
       }
       .width(PERCENTAGE_100)
       .height(CommonConstants.HEADER_HEIGHT)
-      .backgroundColor(Color.Gray)
+      .backgroundColor(CommonConstants.ColorHeader)
+
+
     }
+    .height(PERCENTAGE_100)
   }
 }
