@@ -46,6 +46,5 @@ export default class CommonConstants {
 
   static toStringData(data: TodoData): string {
     return `id: ${data.id}, content: ${data.content}, isComplete: ${data.isComplete}`;
-
   }
 }

@@ -49,8 +49,8 @@ export default struct TodoListBody {
             ToDoItem({ todo: item })
           })
         }
-        .height(PERCENTAGE_100)
       }
+      .scrollBarWidth(0)
 
       Button() {
         Image($rawfile('index/add.png'))
