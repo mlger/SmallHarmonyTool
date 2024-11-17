@@ -43,14 +43,18 @@ export default struct TodoListBody {
 
   build() {
     Stack() {
-      Scroll() {
-        Column() {
-          ForEach(this.todoList, (item: TodoData) => {
-            ToDoItem({ todo: item })
-          })
+      Column() {
+
+        Scroll() {
+          Column() {
+            ForEach(this.todoList, (item: TodoData) => {
+              ToDoItem({ todo: item })
+            })
+          }
         }
+        .scrollBarWidth(0)
       }
-      .scrollBarWidth(0)
+      .height(CommonConstants.MAIN_HEIGHT)
 
       Button() {
         Image($rawfile('index/add.png'))
